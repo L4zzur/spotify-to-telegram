@@ -5,6 +5,6 @@ status = 'paste your stock bio'
 # SPOTIFY
 client_id = 'paste client_id' 
 client_secret = 'paste client_secret'
-redirect_uri = "http://localhost:8888/" # don't touch
+redirect_uri = "http://localhost:8888/callback" # don't touch
 username = 'paste username'
 scope = 'user-read-currently-playing' # don't touch
