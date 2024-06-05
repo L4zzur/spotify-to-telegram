@@ -1,46 +1,89 @@
-import spotipy
 import time
-from telethon.sync import TelegramClient
-from telethon.tl.functions.account import UpdateProfileRequest
-from spotipy.oauth2 import SpotifyOAuth
-from config import api_hash, api_id, client_id, client_secret, redirect_uri, username, scope, status
-telethon_client = TelegramClient('anon', api_id, api_hash).start()
 
-spotify = spotipy.Spotify(auth_manager=SpotifyOAuth(
-        client_id=client_id,
-        client_secret=client_secret,
-        redirect_uri=redirect_uri,
-        username=username,
-        scope=scope,
-    ),
-    language='ru'
+import spotipy
+from pyrogram import Client
+from pyrogram.raw import functions
+from spotipy.oauth2 import SpotifyOAuth
+
+from config import (
+    api_hash,
+    api_id,
+    client_id,
+    client_secret,
+    default_bio,
+    is_premium,
+    nowplay_bio,
+    redirect_uri,
+    scope,
+    username,
 )
 
-def update_status():
-    global last_status
-    current = spotify.current_user_playing_track()
-    if current is None or not current['is_playing']:
-        if last_status != status:
-            print("None")
-            last_status = status
-            telethon_client(UpdateProfileRequest(about=status))
-    else:
-        track = current["item"]["name"]
-        album = current["item"]["album"]["name"]
-        artist = current["item"]["artists"][0]["name"]
-        music = '🎧 Now Playing | ' + artist + ' - ' + track
-        if len(music) > 70:
-            music = music[:69][:music.rfind(' ')] + '…'
-        if last_status != music:
-            last_status = music
-            print(music)
-            telethon_client(UpdateProfileRequest(about=music))
 
-if __name__ == '__main__':
-    last_status = None
-    while True:
-        try:
-            update_status()
-        except Exception as e:
-            print(f'Произошла ошибка: {e}')
-        time.sleep(5)
+def check_bio_len(bio_max_len: int, bio: str) -> str:
+    """
+    Returns truncated string and prints a warning if the string is truncated
+    """
+    if len(bio) > bio_max_len:
+        print(
+            f"Bio is too long! It's over the limit by {len(bio) - bio_max_len} characters."
+        )
+        return bio[: bio_max_len - 1][: bio.rfind(" ")] + "…"
+    else:
+        return bio
+
+
+def update_status(app: Client, spotify: spotipy.Spotify, bio_max_len: int):
+    global last_bio
+    current_song = spotify.current_user_playing_track()
+
+    if current_song is None or not current_song["is_playing"]:
+        if last_bio != default_bio:
+            print("None")
+            last_bio = default_bio
+            with app:
+                app.invoke(functions.account.UpdateProfile(about=default_bio))
+    else:
+        track = current_song["item"]["name"]
+        album = current_song["item"]["album"]["name"]
+        artist = current_song["item"]["artists"][0]["name"]
+
+        new_bio = check_bio_len(
+            bio_max_len=bio_max_len,
+            bio=nowplay_bio.substitute(artist=artist, track=track, album=album),
+        )
+
+        if last_bio != new_bio:
+            last_bio = new_bio
+            print(new_bio)
+            with app:
+                app.invoke(functions.account.UpdateProfile(about=new_bio))
+
+
+if __name__ == "__main__":
+    app = Client(name="spotify_to_bio", api_id=api_id, api_hash=api_hash)
+
+    spotify = spotipy.Spotify(
+        auth_manager=SpotifyOAuth(
+            client_id=client_id,
+            client_secret=client_secret,
+            redirect_uri=redirect_uri,
+            username=username,
+            scope=scope,
+        ),
+        language="ru",
+    )
+
+    last_bio = None
+
+    bio_max_len = 140 if is_premium else 70
+
+    try:
+        while True:
+            try:
+                update_status(app=app, spotify=spotify, bio_max_len=bio_max_len)
+            except Exception as e:
+                print(f"Произошла ошибка: {e}")
+            time.sleep(5)
+    except KeyboardInterrupt:
+        print("\nExiting...\n")
+        exit()
