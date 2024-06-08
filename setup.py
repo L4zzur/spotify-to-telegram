@@ -1,29 +1,81 @@
-config = open('config.py', 'w')
-lang = input('Выберите язык / Choose language (RU  EN): ')
-if lang.lower() == 'ru':
-    from russian import *
-elif lang.lower() == 'en':
-    from english import *
-else:
-    print('Выбран неверный язык / The wrong language is selected')
+import gettext
+from pyrogram.client import Client
+
+from jinja2 import Environment, FileSystemLoader
+
+lang = input("Choose language (ru / en / ua / by): ").lower()
+if lang not in ["ru", "en"]:
+    print("Wrong language")
     exit()
 
+translations = gettext.translation(
+    domain="messages", localedir="translations/", languages=[lang]
+)
+translations.install()  # Magically make the _ function globally available
+_ = translations.gettext
+
 # Telegram
-print(tg_start1)
-print(tg_start2)
-api_id = input(api_id_text) # my.telegram.org
-api_hash = input(api_hash_text) # my.telegram.org
-status = input(status_text)
-config.write(f'# Telegram\napi_id = {api_id}\napi_hash = "{api_hash}"\nstatus = "{status}"\n# Spotify\n')
+print(_("------ Setting up Telegram ------"))
+print(_("Please enter the following details"))
+api_id = int(input(_("Enter API ID: ")))  # my.telegram.org
+api_hash = input(_("Enter API Hash: "))  # my.telegram.org
+is_premium = True if input(_("Your account has Premium? (y/n): ")) == "y" else False
+default_bio = input(_("Enter default bio: "))
+print()
+
+#  Telegram Channel Message
+if (
+    input(_("Do you want to set up Now Playing for a message in your channel? (y/n): "))
+    == "y"
+):
+    use_channel_nowplay = True
+    chat_id = int(input(_("Enter chat ID: ")))
+    message_id = int(input(_("Enter message ID: ")))
+    account = input(_("Enter account URL (you can use bit.ly): "))
+    default_message = input(_("Enter default message: "))
+    print()
+else:
+    use_channel_nowplay = False
+    chat_id = None
+    message_id = None
+    account = None
+    default_message = None
+
 
 # Spotify
-print(spotify_start1)
-print(spotify_start2)
-client_id = input(client_id_text)
-client_secret = input(client_secret_text)
-redirect_uri = "http://localhost:8888/callback" # Не трогать / Don't touch
-username = input(username_text)
-scope = 'user-read-currently-playing'
-config.write(f'client_id = "{client_id}"\nclient_secret = "{client_secret}"\nredirect_uri = "{redirect_uri}"\nusername = "{username}"\nscope = "{scope}"')
-config.close()
-print(final_text, f'\nhttps://accounts.spotify.com/authorize?response_type=code&client_id={client_id}&scope=user-read-currently-playing&redirect_uri=http://localhost:8888/callback')
+print(_("------ Setting up Spotify ------"))
+print(_("Please enter the following details"))
+client_id = input(_("Enter Client ID: "))  # developer.spotify.com/dashboard
+client_secret = input(_("Enter Client Secret: "))  # developer.spotify.com/dashboard
+username = input(_("Enter username: "))
+redirect_uri = "http://localhost:8888/callback"  # Don't touch
+scope = "user-read-currently-playing"
+print(_("Setup completed!"))
+
+config_data = {
+    "api_id": api_id,
+    "api_hash": api_hash,
+    "is_premium": is_premium,
+    "default_bio": default_bio,
+    "use_channel_nowplay": use_channel_nowplay,
+    "chat_id": chat_id,
+    "message_id": message_id,
+    "account": account,
+    "default_message": default_message,
+    "client_id": client_id,
+    "client_secret": client_secret,
+    "redirect_uri": redirect_uri,
+    "username": username,
+    "scope": scope,
+}
+
+env = Environment(loader=FileSystemLoader("templates"))
+template = env.get_template("config.j2")
+
+config = template.render(config_data)
+
+with open("config.py", "w", encoding="utf-8") as f:
+    f.write(config)
+
+print("Login to your Telegram account")
+app = Client(name="spotify_to_bio", api_id=api_id, api_hash=api_hash)
