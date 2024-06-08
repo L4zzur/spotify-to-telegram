@@ -10,7 +10,7 @@ from pyrogram.handlers.message_handler import MessageHandler
 from pyrogram.types import Message
 from spotipy.oauth2 import SpotifyOAuth
 
-from _config import (
+from config import (
     api_hash,
     api_id,
     client_id,
