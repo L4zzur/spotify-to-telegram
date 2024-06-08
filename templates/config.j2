@@ -1,0 +1,27 @@
+from string import Template
+
+# Telegram
+api_id = {{ api_id }}
+api_hash = "{{ api_hash }}"
+is_premium = {{ is_premium }}
+
+#  Telegram Bio
+default_bio = "{{ default_bio }}"
+nowplay_bio = Template("🎧 Now Playing: $artist — $track")
+{% if use_channel_nowplay %}
+
+#  Telegram Channel Message
+use_channel_nowplay = {{ use_channel_nowplay }}
+chat_id = {{ chat_id }}
+message_id = {{ message_id }}
+account = "{{ account }}"
+default_message = "{{ default_message }}"
+nowplay_message = Template("🎧 Now Playing: $artist — $track — $album\\n[▶️ Spotify]($spotify) | [🔗 Other]($other) | [Spotify Account]({account})")
+{% endif %}
+
+# Spotify
+client_id = "{{ client_id }}"
+client_secret = "{{ client_secret }}"
+username = "{{ username }}"
+redirect_uri = "{{ redirect_uri }}"
+scope = "{{ scope }}"
