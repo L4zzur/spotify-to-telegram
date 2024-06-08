@@ -1,0 +1,85 @@
+# Russian translations for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-06-08 22:42+0200\n"
+"PO-Revision-Date: 2024-06-08 22:39+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ru\n"
+"Language-Team: ru <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.15.0\n"
+
+#: setup.py:21
+msgid "------ Setting up Telegram ------"
+msgstr "------ Настройка Telegram ------"
+
+#: setup.py:22 setup.py:60
+msgid "Please enter the following details"
+msgstr "Пожалуйста, введите следующие данные"
+
+#: setup.py:23
+msgid "Enter API ID: "
+msgstr "Введите API ID: "
+
+#: setup.py:24
+msgid "Enter API Hash: "
+msgstr "Введите API Hash: "
+
+#: setup.py:25
+msgid "Your account has Premium? (y/n): "
+msgstr "У вас есть Premium? (y/n): "
+
+#: setup.py:26
+msgid "Enter default bio: "
+msgstr "Введите статус по умолчанию: "
+
+#: setup.py:40
+msgid "Do you want to set up Now Playing for a message in your channel? (y/n): "
+msgstr "Вы хотите настройка Now Playing для сообщения в вашем канале? (y/n): "
+
+#: setup.py:43
+msgid "Enter chat ID: "
+msgstr "Введите ID чата: "
+
+#: setup.py:44
+msgid "Enter message ID: "
+msgstr "Введите ID сообщения: "
+
+#: setup.py:45
+msgid "Enter account URL (you can use bit.ly): "
+msgstr "Введите URL аккаунта (можно использовать bit.ly): "
+
+#: setup.py:46
+msgid "Enter default message: "
+msgstr "Введите сообщение по умолчанию: "
+
+#: setup.py:59
+msgid "------ Setting up Spotify ------"
+msgstr "------ Настройка Spotify ------"
+
+#: setup.py:61
+msgid "Enter Client ID: "
+msgstr "Введите Client ID: "
+
+#: setup.py:62
+msgid "Enter Client Secret: "
+msgstr "Введите Client Secret: "
+
+#: setup.py:63
+msgid "Enter username: "
+msgstr "Введите имя пользователя: "
+
+#: setup.py:76
+msgid "Setup completed!"
+msgstr "Настройка завершена!"
+
