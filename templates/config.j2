@@ -16,7 +16,7 @@ chat_id = {{ chat_id }}
 message_id = {{ message_id }}
 account = "{{ account }}"
 default_message = f"{{ default_message }} | [Spotify Account]({account})"
-nowplay_message = Template("🎧 Now Playing: $artist — $track — $album\n[▶️ Spotify]($spotify) | [🔗 Other]($other) | [Spotify Account]({account})")
+nowplay_message = Template(f"🎧 Now Playing: $artist — $track — $album\n[▶️ Spotify]($spotify) | [🔗 Other]($other) | [Spotify Account]({account})")
 {% endif %}
 
 # Spotify
