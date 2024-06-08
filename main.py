@@ -215,14 +215,3 @@ if __name__ == "__main__":
 
     scheduler.start()
     app.run()
-
-    # try:
-    #     while True:
-    #         try:
-    #             update_status(app=app, spotify=spotify, max_bio_len=max_bio_len)
-    #         except Exception as e:
-    #             logger.error(f"Произошла ошибка: {e}")
-    #         time.sleep(5)
-    # except KeyboardInterrupt:
-    #     print("\nExiting...\n")
-    #     exit()
