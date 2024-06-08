@@ -79,3 +79,4 @@ with open("config.py", "w", encoding="utf-8") as f:
 
 print("Login to your Telegram account")
 app = Client(name="spotify_to_bio", api_id=api_id, api_hash=api_hash)
+app.run()
