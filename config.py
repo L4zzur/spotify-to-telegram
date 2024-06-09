@@ -16,7 +16,8 @@ message_id = 100
 account = "https://spoti.fi/"
 default_message = f"Currently not playing | [Spotify Account]({account})"
 nowplay_message = Template(
-    f"🎧 Now Playing: $artist — $track — $album\n[▶️ Spotify]($spotify) | [🔗 Other]($other) | [Spotify Account]({account})"
+    f"🎧 Now Playing: $artist — $track — $album\n"
+    f"[▶️ Spotify]($spotify) | [🔗 Other]($other) | [Spotify Account]({account})"
 )
 
 # Spotify
