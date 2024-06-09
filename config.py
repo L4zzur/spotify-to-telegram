@@ -6,6 +6,7 @@ api_hash = ""
 is_premium = True
 
 #  Telegram Bio
+use_bio_nowplay = True
 default_bio = "Default Bio"
 nowplay_bio = Template("🎧 Now Playing: $artist — $track")
 
