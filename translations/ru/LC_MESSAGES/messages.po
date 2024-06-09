@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-06-08 22:42+0200\n"
+"POT-Creation-Date: 2024-06-09 10:48+0200\n"
 "PO-Revision-Date: 2024-06-08 22:39+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -19,67 +19,71 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.15.0\n"
 
-#: setup.py:21
+#: setup.py:18
 msgid "------ Setting up Telegram ------"
 msgstr "------ Настройка Telegram ------"
 
-#: setup.py:22 setup.py:60
+#: setup.py:19 setup.py:48
 msgid "Please enter the following details"
 msgstr "Пожалуйста, введите следующие данные"
 
-#: setup.py:23
+#: setup.py:20
 msgid "Enter API ID: "
 msgstr "Введите API ID: "
 
-#: setup.py:24
+#: setup.py:21
 msgid "Enter API Hash: "
 msgstr "Введите API Hash: "
 
-#: setup.py:25
+#: setup.py:22
+msgid "Do you want to set up Now Playing for a your bio? (y/n): "
+msgstr "Вы хотите настроить Now Playing для вашего статуса? (y/n): "
+
+#: setup.py:23
 msgid "Your account has Premium? (y/n): "
 msgstr "У вас есть Premium? (y/n): "
 
-#: setup.py:26
+#: setup.py:24
 msgid "Enter default bio: "
 msgstr "Введите статус по умолчанию: "
 
-#: setup.py:40
+#: setup.py:29
 msgid "Do you want to set up Now Playing for a message in your channel? (y/n): "
-msgstr "Вы хотите настройка Now Playing для сообщения в вашем канале? (y/n): "
+msgstr "Вы хотите настроить Now Playing для сообщения в вашем канале? (y/n): "
 
-#: setup.py:43
+#: setup.py:33
 msgid "Enter chat ID: "
 msgstr "Введите ID чата: "
 
-#: setup.py:44
+#: setup.py:34
 msgid "Enter message ID: "
 msgstr "Введите ID сообщения: "
 
-#: setup.py:45
+#: setup.py:35
 msgid "Enter account URL (you can use bit.ly): "
 msgstr "Введите URL аккаунта (можно использовать bit.ly): "
 
-#: setup.py:46
+#: setup.py:36
 msgid "Enter default message: "
 msgstr "Введите сообщение по умолчанию: "
 
-#: setup.py:59
+#: setup.py:47
 msgid "------ Setting up Spotify ------"
 msgstr "------ Настройка Spotify ------"
 
-#: setup.py:61
+#: setup.py:49
 msgid "Enter Client ID: "
 msgstr "Введите Client ID: "
 
-#: setup.py:62
+#: setup.py:50
 msgid "Enter Client Secret: "
 msgstr "Введите Client Secret: "
 
-#: setup.py:63
+#: setup.py:51
 msgid "Enter username: "
 msgstr "Введите имя пользователя: "
 
-#: setup.py:76
+#: setup.py:54
 msgid "Setup completed!"
 msgstr "Настройка завершена!"
 
