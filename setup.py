@@ -3,7 +3,7 @@ import gettext
 from jinja2 import Environment, FileSystemLoader
 from pyrogram.client import Client
 
-lang = input("Choose language (ru / en / ua / by): ").lower()
+lang = input("Choose language (ru/en): ").lower()
 if lang not in ["ru", "en"]:
     print("Wrong language")
     exit()
