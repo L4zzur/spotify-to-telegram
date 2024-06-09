@@ -6,7 +6,6 @@
 ![1.1.2](img/1.2.png)
 
 # Installation:
-
 ###### Clone the repository:
 ```bash
 $ git clone https://github.com/L4zzur/spotify-to-telegram.git
@@ -29,9 +28,7 @@ $ pip install -r requirements.txt
 ```
 
 # Setting up:
-
 ### Telegram:
-
 1. Go to [my.telegram.org](https://my.telegram.org/)
 2. Authorize and click on API development tools
 3. Create an application and set the web type (you can specify any names; we only need api_id and api_hash):
@@ -50,12 +47,12 @@ $ pip install -r requirements.txt
 
 ### Python
 1. Go to the script directory (step 2 from the installation)
-2. Run the script to configure:
+2. Run the script to configure (check you're has (venv)):
 ```bash
 $ python setup.py
 ```
-1. Fill in all the necessary data that we received earlier, as requested by the script.
-2. Authorize our Spotify application through the link that the script returned. Or you can fill in the config yourself in the config.py file.
+3. Fill in all the necessary data that we received earlier, as requested by the script.
+4. Authorize our Spotify application through the link that the script returned. Or you can fill in the config yourself in the config.py file.
 
 ![1.6](img/6.png)
 
@@ -64,5 +61,5 @@ $ python setup.py
 ```bash
 $ python main.py
 ```
-1. Proceed with the Telegram authorization.
-2. Enjoy!
+2. Proceed with the Telegram authorization.
+3. Enjoy!
