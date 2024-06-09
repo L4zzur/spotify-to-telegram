@@ -15,9 +15,6 @@ from config import (
     api_id,
     client_id,
     client_secret,
-    default_bio,
-    is_premium,
-    nowplay_bio,
     redirect_uri,
     scope,
     username,
@@ -33,6 +30,11 @@ try:
     )
 except ImportError:
     use_channel_nowplay = False
+
+try:
+    from config import default_bio, is_premium, nowplay_bio, use_bio_nowplay
+except ImportError:
+    use_bio_nowplay = False
 
 
 def check_bio_len(max_bio_len: int, bio: str) -> str:
@@ -189,16 +191,17 @@ if __name__ == "__main__":
 
     scheduler = AsyncIOScheduler()
 
-    scheduler.add_job(
-        func=update_status,
-        kwargs={
-            "app": app,
-            "spotify": spotify,
-            "max_bio_len": max_bio_len,
-        },
-        trigger="interval",
-        seconds=15,
-    )
+    if use_bio_nowplay:
+        scheduler.add_job(
+            func=update_status,
+            kwargs={
+                "app": app,
+                "spotify": spotify,
+                "max_bio_len": max_bio_len,
+            },
+            trigger="interval",
+            seconds=15,
+        )
 
     if use_channel_nowplay:
         scheduler.add_job(
