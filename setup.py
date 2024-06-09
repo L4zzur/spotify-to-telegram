@@ -1,7 +1,7 @@
 import gettext
-from pyrogram.client import Client
 
 from jinja2 import Environment, FileSystemLoader
+from pyrogram.client import Client
 
 lang = input("Choose language (ru / en / ua / by): ").lower()
 if lang not in ["ru", "en"]:
@@ -19,9 +19,15 @@ print(_("------ Setting up Telegram ------"))
 print(_("Please enter the following details"))
 api_id = int(input(_("Enter API ID: ")))  # my.telegram.org
 api_hash = input(_("Enter API Hash: "))  # my.telegram.org
-is_premium = True if input(_("Your account has Premium? (y/n): ")) == "y" else False
-default_bio = input(_("Enter default bio: "))
-print()
+if input(_("Do you want to set up Now Playing for a your bio? (y/n): ")) == "y":
+    use_bio_nowplay = True
+    is_premium = True if input(_("Your account has Premium? (y/n): ")) == "y" else False
+    default_bio = input(_("Enter default bio: "))
+    print()
+else:
+    use_bio_nowplay = False
+    is_premium = False
+    default_bio = None
 
 #  Telegram Channel Message
 if (
@@ -55,6 +61,7 @@ print(_("Setup completed!"))
 config_data = {
     "api_id": api_id,
     "api_hash": api_hash,
+    "use_bio_nowplay": use_bio_nowplay,
     "is_premium": is_premium,
     "default_bio": default_bio,
     "use_channel_nowplay": use_channel_nowplay,
