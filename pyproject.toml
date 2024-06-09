@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "spotify-to-telegram"
+version = "0.2.0"
+description = ""
+authors = ["L4zzur <popovnikita01@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+spotipy = "^2.24.0"
+Pyrogram = "^2.0.106"
+tgcrypto = "^1.2.5"
+loguru = "^0.7.2"
+babel = "^2.15.0"
+jinja2 = "^3.1.4"
+httpx = "^0.27.0"
+apscheduler = "^3.10.4"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.4.2"
+isort = "^5.13.2"
+flake8 = "^7.0.0"
+flake8-pyproject = "^1.2.3"
+mypy = "^1.10.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
