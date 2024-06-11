@@ -5,30 +5,30 @@
 
 ![1.1.2](img/1.2.png)
 
-# Installation:
-###### Clone the repository:
+# Installation
+###### Clone the repository
 ```bash
 $ git clone https://github.com/L4zzur/spotify-to-telegram.git
 ```
 
-###### Go to the "spotify-to-telegram" folder:
+###### Go to the "spotify-to-telegram" folder
 ```bash
 $ cd spotify-to-telegram
 ```
 
-###### Create a virtual environment and activate it:
+###### Create a virtual environment and activate it
 ```bash
 $ python -m venv venv
 $ source venv/bin/activate
 ```
 
-###### Install libraries using pip:
+###### Install libraries using pip
 ```bash
 $ pip install -r requirements.txt
 ```
 
-# Setting up:
-### Telegram:
+# Setting up
+### Telegram
 1. Go to [my.telegram.org](https://my.telegram.org/)
 2. Authorize and click on API development tools
 3. Create an application and set the web type (you can specify any names; we only need api_id and api_hash):
@@ -52,7 +52,7 @@ $ pip install -r requirements.txt
 $ python setup.py
 ```
 3. Fill in all the necessary data that we received earlier, as requested by the script.
-4. Authorize our Spotify application through the link that the script returned. Or you can fill in the config yourself in the config.py file.
+4. Authorize Telegram account in terminal by following the instructions.
 
 ![1.6](img/6.png)
 
@@ -61,5 +61,5 @@ $ python setup.py
 ```bash
 $ python main.py
 ```
-2. Proceed with the Telegram authorization.
+2. Proceed with the Spotify authorization (need to be done only once, but you need active login on Spotify in browser).
 3. Enjoy!
