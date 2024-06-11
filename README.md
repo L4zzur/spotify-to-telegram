@@ -63,3 +63,6 @@ $ python main.py
 ```
 2. Proceed with the Spotify authorization (need to be done only once, but you need active login on Spotify in browser).
 3. Enjoy!
+
+# Installation on VPS/VDS
+You can install the script on VPS/VDS using [systemd](systemd/README.md) insruction.
