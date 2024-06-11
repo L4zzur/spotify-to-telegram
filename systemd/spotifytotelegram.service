@@ -1,0 +1,15 @@
+[Unit]
+Description=SpotifyToTelegram
+After=network.target
+
+[Service]
+Type=simple
+User=*your user*
+Environment=PYTHONPATH=*path to spotify-to-telegram*
+WorkingDirectory=*path to spotify-to-telegram*
+ExecStart=*path to spotify-to-telegram*/bin/python main.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
