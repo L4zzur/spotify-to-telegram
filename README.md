@@ -19,7 +19,7 @@ $ cd spotify-to-telegram
 ###### Create a virtual environment and activate it
 ```bash
 $ python -m venv venv
-$ source venv/bin/activate
+$ source venv/bin/activate (or venv/bin/activate on Windows)
 ```
 
 ###### Install libraries using pip
