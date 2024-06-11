@@ -102,6 +102,7 @@ async def create_message(spotify: spotipy.Spotify) -> str:
     current_song = spotify.current_user_playing_track()
 
     if current_song is None or not current_song["is_playing"]:
+        logger.info("Nothing playing")
         return default_message
     else:
         track = current_song["item"]["name"]
@@ -120,6 +121,7 @@ async def create_message(spotify: spotipy.Spotify) -> str:
         new_message = nowplay_message.substitute(
             artist=artist, track=track, album=album, spotify=url, other=other_url
         )
+        logger.info(new_message)
         return new_message
 
 
