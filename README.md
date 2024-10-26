@@ -56,6 +56,8 @@ $ python setup.py
 
 ![1.6](img/6.png)
 
+5. After that, if you see empty line in the terminal and `New login` message from Telegram, stop the script with CTRL+C.
+
 # Run
 1. Run script:
 ```bash
