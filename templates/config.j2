@@ -6,13 +6,13 @@ api_hash = "{{ api_hash }}"
 is_premium = {{ is_premium }}
 
 {% if use_bio_nowplay %}
-#  Telegram Bio
+# Telegram Bio
 default_bio = "{{ default_bio }}"
 nowplay_bio = Template("🎧 Now Playing: $artist — $track")
 {% endif %}
 
 {% if use_channel_nowplay %}
-#  Telegram Channel Message
+# Telegram Channel Message
 use_channel_nowplay = {{ use_channel_nowplay }}
 chat_id = {{ chat_id }}
 message_id = {{ message_id }}

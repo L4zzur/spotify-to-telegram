@@ -183,7 +183,6 @@ if __name__ == "__main__":
     )
 
     last_bio = None
-    max_bio_len = 140 if is_premium else 70
 
     nowplay_handler = MessageHandler(
         callback=send_message,
@@ -194,6 +193,7 @@ if __name__ == "__main__":
     scheduler = AsyncIOScheduler()
 
     if use_bio_nowplay:
+        max_bio_len = 140 if is_premium else 70
         scheduler.add_job(
             func=update_status,
             kwargs={

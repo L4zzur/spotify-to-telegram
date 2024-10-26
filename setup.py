@@ -1,4 +1,5 @@
 import gettext
+import os
 
 from jinja2 import Environment, FileSystemLoader
 from pyrogram.client import Client
@@ -83,6 +84,10 @@ config = template.render(config_data)
 
 with open("config.py", "w", encoding="utf-8") as f:
     f.write(config)
+
+for file in os.listdir():
+    if file.endswith(".session") or file.endswith(".session-journal"):
+        os.remove(file)
 
 print("Login to your Telegram account")
 app = Client(name="spotify_to_bio", api_id=api_id, api_hash=api_hash)
